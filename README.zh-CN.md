@@ -21,7 +21,7 @@ Krino Matrix 致力于解放人的认知资源。
 
 | 模块 | 输入 → 输出 | 作用 |
 | --- | --- | --- |
-| Action Generator | `State` + 目标 → `ActionSpace` | 生成候选行动 |
+| Action Generator | `State` + 目标 + 约束 → `ActionSpace` | 生成候选行动 |
 | Action Evaluator | `State` + 目标 + `Action` → 得分 | 评估行动的价值 |
 
 ## 许可证

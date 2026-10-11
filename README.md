@@ -21,7 +21,7 @@ By using AI to understand complex states, generate feasible options, and evaluat
 
 | Module | Input → Output | Role |
 | --- | --- | --- |
-| Action Generator | `State` + objective → `ActionSpace` | Generates candidate actions |
+| Action Generator | `State` + objective + constraints → `ActionSpace` | Generates candidate actions |
 | Action Evaluator | `State` + objective + `Action` → score | Evaluates the value of an action |
 
 ## License
