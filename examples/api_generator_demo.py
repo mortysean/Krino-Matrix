@@ -1,7 +1,13 @@
-"""Try the API generator. Run from the project root:
+"""Try the API generator:
 
-    python -m examples.api_generator_demo
+    python examples/api_generator_demo.py
 """
+import sys
+from pathlib import Path
+
+# Make the project root importable when this file is run as a script
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 from core.schema import State
 from core.generator.api_generator import APIGenerator
 from services.llm import LLM
@@ -13,11 +19,11 @@ STATE = State(data={
     "weather": "heavy rain",
     "distance_to_office_km": 5,
     "time": "08:10",
-    "work_starts": "09:00",
+    "work_starts": "20:00",
     "has_car": False,
     "has_ebike": True,
 })
-OBJECTIVE = "9:00 前到达公司"
+OBJECTIVE = "14:00 前到达公司"
 CONSTRAINTS = [
     "尽量不淋湿",
     "通勤花费不超过 50 元",

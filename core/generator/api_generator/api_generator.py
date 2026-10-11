@@ -1,8 +1,8 @@
 import json
 
 from services.llm import LLM
-from ..schema import State, ActionSpace
-from .generator import Generator
+from ...schema import State, ActionSpace
+from ..generator import Generator
 
 
 # Kept in the user turn rather than the system prompt: some gateways replace the system prompt
