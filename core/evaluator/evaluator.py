@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from .schema import State, Action, Decision
+from ..schema import State, Action, Decision
 
 
 class Evaluator(ABC):
