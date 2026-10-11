@@ -8,12 +8,21 @@ By using AI to understand complex states, generate feasible options, and evaluat
 
 ## Core Concepts
 
-| Module | Role |
+### Basic Elements
+
+| Element | Description |
 | --- | --- |
-| `State` | Describes the current situation |
-| `Generator` | Generates candidate actions from a state and an objective |
-| `Evaluator` | Scores how valuable an action is |
+| `State` | The current situation |
+| `Action` | A single candidate action |
+| `ActionSpace` | The set of candidate actions |
 | `Decision` | The chosen action and its score |
+
+### Core Modules
+
+| Module | Input → Output | Role |
+| --- | --- | --- |
+| Action Generator | `State` + objective → `ActionSpace` | Generates candidate actions |
+| Action Evaluator | `State` + objective + `Action` → score | Evaluates the value of an action |
 
 ## License
 
