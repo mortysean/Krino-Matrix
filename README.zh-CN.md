@@ -51,6 +51,8 @@ Observer 可选；不接入时，状态只包含 Formulator 从请求中读出�
 | --- | --- |
 | `SagaxSource`（[sagax 数据平台](https://www.sagax.cn/data/v1/)） | A 股股票（选股、估值、财务、资金流向）、指数、ETF、期货、期权、专题报表、宏观指标、新闻、公告和研报 |
 
+sagax 是作者自建的数据平台：每日从 tushare、tqsdk 等来源采集中国市场数据，财务数据按时点（PIT）口径保存，通过 HTTP API 和 Python SDK `sagax-data` 对外提供。数据表、指标和示例见 [sagax 官网](https://www.sagax.cn/data/v1/)；查询需要 API key 和 secret。
+
 ## 项目结构
 
 ```

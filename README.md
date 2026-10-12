@@ -51,6 +51,8 @@ Built-in source:
 | --- | --- |
 | `SagaxSource` ([sagax data platform](https://www.sagax.cn/data/v1/)) | A-share stocks (screening, valuation, financials, capital flows), indices, ETFs, futures, options, special reports, macro indicators, news, announcements and research |
 
+sagax is a data platform built by the author. It collects China market data from sources such as tushare and tqsdk on a daily schedule, keeps financials point-in-time (PIT), and serves everything through an HTTP API and the Python SDK `sagax-data`. Tables, indicators and examples are documented on the [sagax site](https://www.sagax.cn/data/v1/); an API key and secret are needed to query it.
+
 ## Project Structure
 
 ```
