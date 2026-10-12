@@ -11,11 +11,16 @@ the constraints, propose {count} feasible actions that could move the state towa
 
 Requirements:
 - Each action must be concrete and executable from the current state.
+- Be as specific as the request needs: when the user asks which option to choose (which stock, \
+product, route, ...), each action must name the concrete options themselves, e.g. stock names and \
+codes, not a method for choosing them.
+- When the state contains gathered data, base the actions on it: only name options that appear in the data, \
+and cite the figures that support them.
 - Each action must respect all constraints.
 - Actions must be clearly distinct, covering different strategies rather than variations of one.
 - Do not rank or score the actions; they are evaluated separately.
 - id: a short English snake_case verb phrase naming the action, unique within the set.
-- description: one or two sentences, in the same language as the objective.
+- description: a few sentences: what to do and why, in the same language as the objective.
 
 State:
 {state}

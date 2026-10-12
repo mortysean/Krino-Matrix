@@ -13,6 +13,7 @@ Krino Matrix 致力于解放人的认知资源。
 | 元素 | 说明 |
 | --- | --- |
 | `State` | 当前状态 |
+| `Problem` | 决策问题：`State` + 目标 + 约束 |
 | `Action` | 单个候选行动 |
 | `ActionSpace` | 候选行动的集合 |
 | `Decision` | 最终选择的行动及其得分 |
@@ -21,6 +22,8 @@ Krino Matrix 致力于解放人的认知资源。
 
 | 模块 | 输入 → 输出 | 作用 |
 | --- | --- | --- |
+| Problem Formulator | 自然语言请求 → `Problem` | 把用户的请求转化为决策问题 |
+| Observer | `Problem` + 数据源 → `State` | 从数据源收集决策所需的数据，补充进状态 |
 | Action Generator | `State` + 目标 + 约束 → `ActionSpace` | 生成候选行动 |
 | Action Evaluator | `State` + 目标 + `Action` → 得分 | 评估行动的价值 |
 

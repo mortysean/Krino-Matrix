@@ -13,6 +13,7 @@ By using AI to understand complex states, generate feasible options, and evaluat
 | Element | Description |
 | --- | --- |
 | `State` | The current situation |
+| `Problem` | A decision problem: `State` + objective + constraints |
 | `Action` | A single candidate action |
 | `ActionSpace` | The set of candidate actions |
 | `Decision` | The chosen action and its score |
@@ -21,6 +22,8 @@ By using AI to understand complex states, generate feasible options, and evaluat
 
 | Module | Input → Output | Role |
 | --- | --- | --- |
+| Problem Formulator | natural-language request → `Problem` | Turns the user's request into a decision problem |
+| Observer | `Problem` + data sources → `State` | Gathers the data the decision needs into the state |
 | Action Generator | `State` + objective + constraints → `ActionSpace` | Generates candidate actions |
 | Action Evaluator | `State` + objective + `Action` → score | Evaluates the value of an action |
 

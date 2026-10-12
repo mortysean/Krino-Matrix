@@ -6,6 +6,12 @@ class State(BaseModel):
     data: dict[str, Any]
 
 
+class Problem(BaseModel):
+    state: State
+    objective: str
+    constraints: list[str]
+
+
 class Action(BaseModel):
     id: str = Field(
         pattern=r"^[a-z][a-z0-9]*(_[a-z0-9]+)*$",
