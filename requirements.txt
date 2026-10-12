@@ -2,3 +2,5 @@ pydantic>=2
 litellm>=1.105
 python-dotenv>=1.0
 anthropic>=1.13
+sagax-data>=1.1
+pandas>=2
