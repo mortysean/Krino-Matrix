@@ -27,6 +27,65 @@ Krino Matrix 致力于解放人的认知资源。
 | Action Generator | `State` + 目标 + 约束 → `ActionSpace` | 生成候选行动 |
 | Action Evaluator | `State` + 目标 + `Action` → 得分 | 评估行动的价值 |
 
+每个模块都是抽象接口，`api_*` 实现基于托管的大模型。
+
+### 流水线
+
+`Pipeline` 把各模块串成一次完整决策：
+
+```
+请求 ─▶ Formulator ─▶ Observer ─▶ Generator ─▶ Evaluator ─▶ 决策（按得分排序）
+                         ▲
+                       数据源
+```
+
+Observer 可选；不接入时，状态只包含 Formulator 从请求中读出的信息。候选行动并发评估。
+
+### 数据源
+
+`DataSource` 提供一组 `Query`，每个 `Query` 有名称、说明和参数结构。API Observer 把它们作为工具交给大模型调用，查询结果原样存入状态的 `observations`，数字不经过大模型转述。
+
+内置数据源：
+
+| 数据源 | 覆盖范围 |
+| --- | --- |
+| `SagaxSource`（[sagax 数据平台](https://www.sagax.cn/data/v1/)） | A 股股票（选股、估值、财务、资金流向）、指数、ETF、期货、期权、专题报表、宏观指标、新闻、公告和研报 |
+
+## 项目结构
+
+```
+core/
+  schema.py         基本元素
+  pipeline.py       端到端流水线
+  formulator/       Problem Formulator（api_formulator）
+  observer/         Observer（api_observer）
+  generator/        Action Generator（api_generator）
+  evaluator/        Action Evaluator
+  data/             DataSource / Query 接口，sagax 数据源
+services/
+  llm.py            统一的大模型接口，支持 OpenRouter、litellm 和 Anthropic SDK
+examples/           可运行的示例
+```
+
+## 快速开始
+
+```bash
+pip install -r requirements.txt
+cp .env.example .env    # 填入大模型服务商和 sagax API key
+```
+
+| 示例 | 运行内容 |
+| --- | --- |
+| `python examples/api_formulator_demo.py ["请求"]` | 仅 Formulator |
+| `python examples/api_generator_demo.py` | 仅 Generator，使用手写的状态 |
+| `python examples/data_demo.py` | sagax 数据查询 |
+| `python examples/pipeline_demo.py ["请求"]` | 完整流水线 |
+
+## 进度
+
+- 已实现：Formulator、Observer、Generator、sagax 数据源、流水线
+- 待实现：Action Evaluator —— `pipeline_demo.py` 暂用占位实现，所有行动得分相同
+
 ## 许可证
 
 [Apache License 2.0](LICENSE)
